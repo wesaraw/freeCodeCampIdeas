@@ -1,0 +1,24 @@
+//Created to understand recursion, moving a var though recursion (I call it a recursionTray), and make the "depth" of recursion dependant on its current itteration. 
+//This function is meant to take any 2 randomly generated numbers and create an array from the lowest to the highest
+function rangeOfNumbers(arg1,arg2) {
+  var startNum = (arg1<=arg2)? arg1 : arg2;
+  var endNum = (startNum==arg1)? arg2 : arg1;
+  //puts the numbers in order
+  var sub1 = (arg1<=arg2)? 0 : 1
+  var sub2 = (sub1==1)? 0 : 1;
+  //determines which arg to itterate with
+  var recursionTray = [];
+  //The recursiveTray is something I thought of while writing out a visualization for recursion
+  //Meant to reverse itterate the arg so a value dependant on the arg in the BASE CASE can be determined within any number of itterations
+  //This recursionTray isnt set up right but this seems like the most appropriate name for such a variable
+  recursionTray.push(endNum)
+  if (recursionTray.length != (endNum-startNum+1)){
+  //Defining the range based on the distance between the 2 args
+      return rangeOfNumbers(arg1-sub1,arg2-sub2).concat(recursionTray)
+      //Either sub1 or sub2 is equal to 1, the other is 0
+      }else{
+      return recursionTray = [startNum]
+    }
+  }
+  
+  rangeOfNumbers(5,1);
